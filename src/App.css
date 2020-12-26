@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.title {
+	font-family: "Hanalei Fill", sans-serif;
+	align-self: flex-end;
+	margin: 1rem;
+}
+
+.card {
+	width: 90%;
+	border-radius: 10px;
+	box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+	align-self: center;
+	padding: 1rem;
+}
+
+.twitter {
+	height: 2rem;
+}
+
+.tweet-image {
+	object-fit: cover;
+	height: 20rem;
+	width: 100%;
+	margin: 2rem 0;
+}
+
+.link {
+	background: rgb(0, 162, 245);
+	color: white;
+	/* margin: 3rem 0; */
+	padding: 1rem;
+	border-radius: 10px;
+}
