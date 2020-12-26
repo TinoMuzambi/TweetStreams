@@ -7,12 +7,17 @@ function App() {
 	const [query, setQuery] = useState("");
 
 	useEffect(() => {
+		// Create socket.io client.
 		const socket = io("http://localhost:5000", {
 			origins: "http://localhost:5000",
 		});
+
+		// Connect to server.
 		socket.on("connect", () => {
 			console.log("Connected to server.");
 		});
+
+		// Listen for tweet emit.
 		socket.on("tweet", (tweet) => {
 			console.log("hit");
 			setTweets((tweets) => [tweet, ...tweets]);
@@ -25,6 +30,7 @@ function App() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		// Call server to start streaming tweets.
 		fetch(`http://localhost:5000/start/${query}`);
 		setQuery("");
 		setTweets([]);
@@ -33,6 +39,7 @@ function App() {
 	const handleStop = (e) => {
 		e.preventDefault();
 
+		// Call server to stop streaming tweets.
 		fetch("http://localhost:5000/stop");
 	};
 
