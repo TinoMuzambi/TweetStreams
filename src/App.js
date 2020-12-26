@@ -6,7 +6,14 @@ function App() {
 			<h1 className="title">Tweet Stream</h1>
 
 			<div className="card">
-				<img src="/assets/twitter.png" alt="Twitter logo" className="twitter" />
+				<div className="author">
+					<img
+						src="/assets/twitter.png"
+						alt="Twitter logo"
+						className="twitter"
+					/>
+					<h3 className="author-title">Author</h3>
+				</div>
 				<p className="text">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
 					doloribus repellat eveniet qui quia ex beatae temporibus dolores
