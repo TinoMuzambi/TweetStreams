@@ -8,8 +8,8 @@ function App() {
 
 	useEffect(() => {
 		// Create socket.io client.
-		const socket = io("http://localhost:5000", {
-			origins: "http://localhost:5000",
+		const socket = io("https://live-tweet-stream.herokuapp.com", {
+			origins: "https://live-tweet-stream.herokuapp.com",
 		});
 
 		// Connect to server.
@@ -31,7 +31,7 @@ function App() {
 		e.preventDefault();
 
 		// Call server to start streaming tweets.
-		fetch(`http://localhost:5000/start/${query}`);
+		fetch(`https://live-tweet-stream.herokuapp.com/start/${query}`);
 		setQuery("");
 		setTweets([]);
 	};
@@ -40,7 +40,7 @@ function App() {
 		e.preventDefault();
 
 		// Call server to stop streaming tweets.
-		fetch("http://localhost:5000/stop");
+		fetch("https://live-tweet-stream.herokuapp.com/stop");
 	};
 
 	return (
