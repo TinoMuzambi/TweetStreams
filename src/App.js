@@ -13,9 +13,7 @@ function App() {
 			console.log("Connected to server.");
 		});
 		socket.on("tweet", (tweet) => {
-			const curr = tweets;
-			const newCurr = Array.from([tweet, ...curr]);
-			setTweets(newCurr);
+			setTweets((tweets) => [tweet, ...tweets]);
 			// console.log(tweets);
 		});
 
