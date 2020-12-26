@@ -50,7 +50,7 @@ function App() {
 				<h1 className="title">Tweet Stream</h1>
 			</nav>
 
-			<div className="card">
+			<div className="card large">
 				<form onSubmit={handleSubmit} className="form">
 					<label htmlFor="query">Enter a query</label>
 					<input

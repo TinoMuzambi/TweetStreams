@@ -44,6 +44,10 @@ body {
 	margin: 2rem;
 }
 
+.large {
+	width: 80%;
+}
+
 .form {
 	display: flex;
 	flex-direction: column;
