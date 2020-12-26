@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 function App() {
 	const [tweets, setTweets] = useState([]);
+	const [query, setQuery] = useState("");
 
 	useEffect(() => {
 		const socket = io("http://localhost:5000", {
@@ -26,6 +27,22 @@ function App() {
 				<h1 className="count">{tweets.length}</h1>
 				<h1 className="title">Tweet Stream</h1>
 			</nav>
+
+			<div className="card">
+				<form action="" className="form">
+					<label htmlFor="query">Enter a query</label>
+					<input
+						type="text"
+						name="query"
+						id="text"
+						value={query}
+						onChange={(e) => setQuery(e.target.value)}
+					/>
+					<button className="link" type="submit">
+						Start Stream
+					</button>
+				</form>
+			</div>
 
 			<div className="wrapper">
 				{tweets.map((tweet, key) => (

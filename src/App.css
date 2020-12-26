@@ -44,6 +44,20 @@ body {
 	margin: 2rem;
 }
 
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+#text {
+	outline: none;
+	background: none;
+	border: solid 1px white;
+	border-radius: 10px;
+	padding: 0.5rem;
+}
+
 .author {
 	display: flex;
 	margin-bottom: 1rem;
@@ -68,6 +82,8 @@ body {
 	padding: 1rem;
 	border-radius: 10px;
 	text-decoration: none;
+	cursor: pointer;
+	outline: none;
 }
 
 .link:hover {
