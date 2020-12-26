@@ -3,10 +3,16 @@ import { io } from "socket.io-client";
 
 function App() {
 	const tweets = ["", "", "", "", "", "", ""];
-	const socket = io();
+	const socket = io("https://live-tweet-stream.herokuapp.com/", {
+		origins: "https://live-tweet-stream.herokuapp.com/",
+	});
 
 	socket.on("connect", () => {
 		console.log("Connected to server.");
+	});
+
+	socket.on("tweet", (tweet) => {
+		console.log(tweet);
 	});
 	return (
 		<div className="content">
