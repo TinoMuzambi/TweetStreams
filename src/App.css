@@ -18,9 +18,14 @@ body {
 	min-height: 100vh;
 }
 
-.title {
+.nav {
+	display: flex;
+	justify-content: space-between;
+}
+
+.title,
+.count {
 	font-family: "Hanalei Fill", sans-serif;
-	align-self: flex-end;
 	margin: 1rem;
 }
 

@@ -1,26 +1,33 @@
 import "./App.css";
 import { io } from "socket.io-client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 	const [tweets, setTweets] = useState([]);
-	const socket = io("http://localhost:5000", {
-		origins: "http://localhost:5000",
-	});
 
-	socket.on("connect", () => {
-		console.log("Connected to server.");
-	});
+	useEffect(() => {
+		const socket = io("http://localhost:5000", {
+			origins: "http://localhost:5000",
+		});
+		socket.on("connect", () => {
+			console.log("Connected to server.");
+		});
+		socket.on("tweet", (tweet) => {
+			const curr = tweets;
+			const newCurr = Array.from([tweet, ...curr]);
+			setTweets(newCurr);
+			// console.log(tweets);
+		});
 
-	socket.on("tweet", (tweet) => {
-		const currTweets = tweets;
-		currTweets.unshift(tweet);
-		setTweets(currTweets);
-		console.log(tweets);
-	});
+		return () => socket.disconnect();
+	}, []);
+
 	return (
 		<div className="content">
-			<h1 className="title">Tweet Stream</h1>
+			<nav className="nav">
+				<h1 className="count">{tweets.length}</h1>
+				<h1 className="title">Tweet Stream</h1>
+			</nav>
 
 			{tweets.map((tweet, key) => (
 				<div className="card" key={key}>
