@@ -14,12 +14,20 @@ function App() {
 			console.log("Connected to server.");
 		});
 		socket.on("tweet", (tweet) => {
+			console.log("hit");
 			setTweets((tweets) => [tweet, ...tweets]);
 			// console.log(tweets);
 		});
 
-		return () => socket.disconnect();
+		// return () => socket.disconnect();
 	}, []);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		fetch(`http://localhost:5000/start/${query}`);
+		setQuery("");
+	};
 
 	return (
 		<div className="content">
@@ -29,13 +37,14 @@ function App() {
 			</nav>
 
 			<div className="card">
-				<form action="" className="form">
+				<form onSubmit={handleSubmit} className="form">
 					<label htmlFor="query">Enter a query</label>
 					<input
 						type="text"
 						name="query"
 						id="text"
 						value={query}
+						required
 						onChange={(e) => setQuery(e.target.value)}
 					/>
 					<button className="link" type="submit">
