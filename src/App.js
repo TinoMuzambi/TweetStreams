@@ -19,7 +19,7 @@ function App() {
 			// console.log(tweets);
 		});
 
-		// return () => socket.disconnect();
+		return () => socket.disconnect();
 	}, []);
 
 	const handleSubmit = (e) => {
@@ -27,6 +27,13 @@ function App() {
 
 		fetch(`http://localhost:5000/start/${query}`);
 		setQuery("");
+		setTweets([]);
+	};
+
+	const handleStop = (e) => {
+		e.preventDefault();
+
+		fetch("http://localhost:5000/stop");
 	};
 
 	return (
@@ -50,11 +57,14 @@ function App() {
 					<button className="link" type="submit">
 						Start Stream
 					</button>
+					<button className="link stop" onClick={handleStop}>
+						Stop Stream
+					</button>
 				</form>
 			</div>
 
 			<div className="wrapper">
-				{tweets.map((tweet, key) => (
+				{Array.from(new Set(tweets)).map((tweet, key) => (
 					<div className="card" key={key}>
 						<div className="author">
 							<img

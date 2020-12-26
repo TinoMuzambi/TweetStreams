@@ -84,6 +84,11 @@ body {
 	text-decoration: none;
 	cursor: pointer;
 	outline: none;
+	border: none;
+}
+
+.stop {
+	background: rgb(245, 78, 0);
 }
 
 .link:hover {
