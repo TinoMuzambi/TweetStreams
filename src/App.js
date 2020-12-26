@@ -1,7 +1,13 @@
 import "./App.css";
+import { io } from "socket.io-client";
 
 function App() {
 	const tweets = ["", "", "", "", "", "", ""];
+	const socket = io();
+
+	socket.on("connect", () => {
+		console.log("Connected to server.");
+	});
 	return (
 		<div className="content">
 			<h1 className="title">Tweet Stream</h1>
