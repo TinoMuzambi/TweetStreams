@@ -19,7 +19,7 @@ function App() {
 
 		// Listen for tweet emit.
 		socket.on("tweet", (tweet) => {
-			console.log("hit");
+			// console.log("hit");
 			setTweets((tweets) => [tweet, ...tweets]);
 			// console.log(tweets);
 		});
