@@ -2,12 +2,14 @@ import "./App.css";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import { AiOutlineReload } from "react-icons/ai";
+import filter from "bad-words";
 
 function App() {
 	const [tweets, setTweets] = useState([]);
 	const [query, setQuery] = useState("");
 	const [isFetching, setIsFetching] = useState(false);
 	const [canStart, setCanStart] = useState(true);
+	filter = new filter();
 
 	useEffect(() => {
 		// Create socket.io client.
@@ -97,10 +99,10 @@ function App() {
 									className="twitter"
 								/>
 								<h3 className="author-title">
-									@{tweet.includes.users[0].username}
+									@{filter.clean(tweet.includes.users[0].username)}
 								</h3>
 							</div>
-							<p className="text">{tweet.data.text}</p>
+							<p className="text">{filter.clean(tweet.data.text)}</p>
 							<img src="/logo192.png" alt="tweet" className="tweet-image" />
 							<a
 								href={`https://twitter.com/${tweet.includes.users[0].username}/status/${tweet.data.id}`}
