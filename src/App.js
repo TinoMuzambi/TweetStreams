@@ -7,6 +7,7 @@ function App() {
 	const [tweets, setTweets] = useState([]);
 	const [query, setQuery] = useState("");
 	const [isFetching, setIsFetching] = useState(false);
+	const [canStart, setCanStart] = useState(true);
 
 	useEffect(() => {
 		// Create socket.io client.
@@ -33,6 +34,7 @@ function App() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsFetching(true);
+		setCanStart(false);
 
 		// Call server to start streaming tweets.
 		fetch(
@@ -47,6 +49,8 @@ function App() {
 
 		// Call server to stop streaming tweets.
 		fetch("https://live-tweet-stream.herokuapp.com/stop");
+		setIsFetching(false);
+		setCanStart(true);
 	};
 
 	return (
@@ -70,7 +74,11 @@ function App() {
 					<button className="link" type="submit">
 						Start Stream
 					</button>
-					<button className="link stop" onClick={handleStop}>
+					<button
+						className="link stop"
+						onClick={handleStop}
+						disabled={canStart}
+					>
 						Stop Stream
 					</button>
 				</form>
