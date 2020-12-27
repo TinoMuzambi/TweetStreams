@@ -50,7 +50,7 @@ function App() {
 	return (
 		<div className="content">
 			<nav className="nav">
-				<h1 className="count">{tweets.length}</h1>
+				<h1 className="count">{tweets.length} tweets</h1>
 				<h1 className="title">Tweet Stream</h1>
 			</nav>
 

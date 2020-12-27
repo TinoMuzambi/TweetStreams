@@ -26,6 +26,7 @@ body {
 	left: 0;
 	width: 100%;
 	background: rgb(21, 32, 43);
+	height: 15vh;
 }
 
 .title,
@@ -51,6 +52,7 @@ body {
 
 .large {
 	width: 80%;
+	margin-top: 5rem;
 }
 
 .form {
