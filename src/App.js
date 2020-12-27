@@ -8,7 +8,7 @@ function App() {
 	const [tweets, setTweets] = useState([]);
 	const [query, setQuery] = useState("");
 	const [isFetching, setIsFetching] = useState(false);
-	const [canStart, setCanStart] = useState(true);
+	// const [canStart, setCanStart] = useState(true);
 	const filter = new Filter();
 
 	useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsFetching(true);
-		setCanStart(false);
+		// setCanStart(false);
 
 		// Call server to start streaming tweets.
 		fetch(
@@ -46,14 +46,14 @@ function App() {
 		setTweets([]);
 	};
 
-	const handleStop = (e) => {
-		e.preventDefault();
+	// const handleStop = (e) => {
+	// 	e.preventDefault();
 
-		// Call server to stop streaming tweets.
-		fetch("https://live-tweet-stream.herokuapp.com/stop");
-		setIsFetching(false);
-		setCanStart(true);
-	};
+	// 	// Call server to stop streaming tweets.
+	// 	fetch("https://live-tweet-stream.herokuapp.com/stop");
+	// 	setIsFetching(false);
+	// 	setCanStart(true);
+	// };
 
 	return (
 		<div className="content">
