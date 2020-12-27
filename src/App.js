@@ -2,14 +2,14 @@ import "./App.css";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import { AiOutlineReload } from "react-icons/ai";
-import filter from "bad-words";
+import Filter from "bad-words";
 
 function App() {
 	const [tweets, setTweets] = useState([]);
 	const [query, setQuery] = useState("");
 	const [isFetching, setIsFetching] = useState(false);
 	const [canStart, setCanStart] = useState(true);
-	filter = new filter();
+	const filter = new Filter();
 
 	useEffect(() => {
 		// Create socket.io client.
