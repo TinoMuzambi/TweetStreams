@@ -9,10 +9,7 @@ function App() {
 	useEffect(() => {
 		// Create socket.io client.
 		const socket = io("https://live-tweet-stream.herokuapp.com", {
-			origins: [
-				"https://live-tweet-stream.herokuapp.com",
-				"https://tweet-streams.vercel.app/",
-			],
+			origins: "https://live-tweet-stream.herokuapp.com",
 		});
 
 		// Connect to server.
