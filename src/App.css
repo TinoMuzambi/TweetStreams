@@ -130,7 +130,15 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
+	.nav {
+		height: 10vh;
+	}
+
 	.card {
 		width: 80%;
+	}
+
+	.large {
+		margin-top: 7rem;
 	}
 }
