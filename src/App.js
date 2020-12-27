@@ -35,7 +35,9 @@ function App() {
 		setIsFetching(true);
 
 		// Call server to start streaming tweets.
-		fetch(`https://live-tweet-stream.herokuapp.com/start/${query}`);
+		fetch(
+			`https://live-tweet-stream.herokuapp.com/start/${query.toLowerCase()}`
+		);
 		setQuery("");
 		setTweets([]);
 	};
