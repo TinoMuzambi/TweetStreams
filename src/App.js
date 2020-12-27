@@ -1,10 +1,12 @@
 import "./App.css";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
+import { AiOutlineReload } from "react-icons/ai";
 
 function App() {
 	const [tweets, setTweets] = useState([]);
 	const [query, setQuery] = useState("");
+	const [isFetching, setIsFetching] = useState(false);
 
 	useEffect(() => {
 		// Create socket.io client.
@@ -20,6 +22,7 @@ function App() {
 		// Listen for tweet emit.
 		socket.on("tweet", (tweet) => {
 			// console.log("hit");
+			setIsFetching(false);
 			setTweets((tweets) => [tweet, ...tweets]);
 			// console.log(tweets);
 		});
@@ -29,6 +32,7 @@ function App() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setIsFetching(true);
 
 		// Call server to start streaming tweets.
 		fetch(`https://live-tweet-stream.herokuapp.com/start/${query}`);
@@ -71,29 +75,33 @@ function App() {
 			</div>
 
 			<div className="wrapper">
-				{Array.from(new Set(tweets)).map((tweet, key) => (
-					<div className="card" key={key}>
-						<div className="author">
-							<img
-								src="/assets/twitter.png"
-								alt="Twitter logo"
-								className="twitter"
-							/>
-							<h3 className="author-title">
-								@{tweet.includes.users[0].username}
-							</h3>
+				{isFetching ? (
+					<AiOutlineReload className="icon" />
+				) : (
+					Array.from(new Set(tweets)).map((tweet, key) => (
+						<div className="card" key={key}>
+							<div className="author">
+								<img
+									src="/assets/twitter.png"
+									alt="Twitter logo"
+									className="twitter"
+								/>
+								<h3 className="author-title">
+									@{tweet.includes.users[0].username}
+								</h3>
+							</div>
+							<p className="text">{tweet.data.text}</p>
+							<img src="/logo192.png" alt="tweet" className="tweet-image" />
+							<a
+								href={`https://twitter.com/${tweet.includes.users[0].username}/status/${tweet.data.id}`}
+								className="link"
+								target="__blank"
+							>
+								Go to Tweet
+							</a>
 						</div>
-						<p className="text">{tweet.data.text}</p>
-						<img src="/logo192.png" alt="tweet" className="tweet-image" />
-						<a
-							href={`https://twitter.com/${tweet.includes.users[0].username}/status/${tweet.data.id}`}
-							className="link"
-							target="__blank"
-						>
-							Go to Tweet
-						</a>
-					</div>
-				))}
+					))
+				)}
 			</div>
 		</div>
 	);
