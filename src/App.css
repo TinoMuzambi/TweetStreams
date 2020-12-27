@@ -52,7 +52,7 @@ body {
 
 .large {
 	width: 80%;
-	margin-top: 5rem;
+	margin-top: 7rem;
 }
 
 .form {
@@ -136,9 +136,5 @@ body {
 
 	.card {
 		width: 80%;
-	}
-
-	.large {
-		margin-top: 7rem;
 	}
 }
