@@ -76,13 +76,13 @@ function App() {
 					<button className="link" type="submit">
 						Start Stream
 					</button>
-					<button
+					{/* <button
 						className="link stop"
 						onClick={handleStop}
 						disabled={canStart}
 					>
 						Stop Stream
-					</button>
+					</button> */}
 				</form>
 			</div>
 
