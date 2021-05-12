@@ -24,10 +24,8 @@ function App() {
 
 		// Listen for tweet emit.
 		socket.on("tweet", (tweet) => {
-			// console.log("hit");
 			setIsFetching(false);
 			setTweets((tweets) => [tweet, ...tweets]);
-			// console.log(tweets);
 		});
 
 		return () => socket.disconnect();
