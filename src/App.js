@@ -111,24 +111,14 @@ function App() {
 
 							<div className="media">
 								{tweet.includes.media &&
-									tweet.includes.media.map((i, key) =>
-										i.type === "photo" ? (
-											<img
-												key={key}
-												className="tweet-image"
-												src={i.url}
-												alt="tweet"
-											/>
-										) : (
-											<video
-												src={i.url}
-												className="tweet-image"
-												key={key}
-												autoPlay
-												loop
-											/>
-										)
-									)}
+									tweet.includes.media.map((i, key) => (
+										<img
+											key={key}
+											className="tweet-image"
+											src={i.type === "photo" ? i.url : i.preview_image_url}
+											alt="tweet"
+										/>
+									))}
 							</div>
 
 							<a
