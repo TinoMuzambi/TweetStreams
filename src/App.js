@@ -109,16 +109,24 @@ function App() {
 							</div>
 							<p className="text">{filter.clean(tweet.data.text)}</p>
 
-							<div className="images">
+							<div className="media">
 								{tweet.includes.media &&
-									tweet.includes.media.map((i, key) => (
-										<img
-											key={key}
-											className="tweet-image"
-											src={i.url}
-											alt="tweet"
-										/>
-									))}
+									tweet.includes.media.map((i, key) =>
+										i.type === "photo" ? (
+											<img
+												key={key}
+												className="tweet-image"
+												src={i.url}
+												alt="tweet"
+											/>
+										) : (
+											<video
+												src={i.url}
+												className="tweet-image"
+												key={key}
+											></video>
+										)
+									)}
 							</div>
 
 							<a
