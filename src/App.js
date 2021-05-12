@@ -124,7 +124,9 @@ function App() {
 												src={i.url}
 												className="tweet-image"
 												key={key}
-											></video>
+												autoPlay
+												loop
+											/>
 										)
 									)}
 							</div>
