@@ -27,11 +27,14 @@ function App() {
 		// Listen for tweet emit.
 		socket.on("tweet", (tweet) => {
 			setIsFetching(false);
-			setTweets((tweets) => [tweet, ...tweets]);
+			if (tweets.length >= 20) {
+				socket.disconnect(true);
+			} else {
+				setTweets((tweets) => [tweet, ...tweets]);
+			}
 		});
 
-		console.log(tweets);
-		return () => socket.disconnect();
+		return () => socket.disconnect(true);
 	}, [tweets]);
 
 	const handleSubmit = (e) => {
@@ -104,7 +107,15 @@ function App() {
 								</h3>
 							</div>
 							<p className="text">{filter.clean(tweet.data.text)}</p>
-							<img src="/logo192.png" alt="tweet" className="tweet-image" />
+							<img
+								src={
+									tweet.includes.media
+										? tweet.includes.media[0].url
+										: "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+								}
+								alt="tweet"
+								className="tweet-image"
+							/>
 							<a
 								href={`https://twitter.com/${tweet.includes.users[0].username}/status/${tweet.data.id}`}
 								className="link"
