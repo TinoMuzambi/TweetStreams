@@ -33,7 +33,6 @@ function App() {
 				setTweets((tweets) => [tweet, ...tweets]);
 			}
 		});
-		console.log(tweets);
 
 		return () => socket.disconnect(true);
 	}, [tweets]);
