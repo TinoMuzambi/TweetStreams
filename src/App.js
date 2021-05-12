@@ -1,8 +1,10 @@
 import "./App.css";
+
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import { AiOutlineReload } from "react-icons/ai";
 import Filter from "bad-words";
+import { motion } from "framer-motion";
 
 function App() {
 	const [tweets, setTweets] = useState([]);
@@ -28,8 +30,9 @@ function App() {
 			setTweets((tweets) => [tweet, ...tweets]);
 		});
 
+		console.log(tweets);
 		return () => socket.disconnect();
-	}, []);
+	}, [tweets]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -89,7 +92,7 @@ function App() {
 					<AiOutlineReload className="icon" />
 				) : (
 					Array.from(new Set(tweets)).map((tweet, key) => (
-						<div className="card" key={key}>
+						<motion.div className="card" key={key} layout>
 							<div className="author">
 								<img
 									src="/assets/twitter.png"
@@ -109,7 +112,7 @@ function App() {
 							>
 								Go to Tweet
 							</a>
-						</div>
+						</motion.div>
 					))
 				)}
 			</div>
