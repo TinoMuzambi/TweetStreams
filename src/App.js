@@ -110,11 +110,15 @@ function App() {
 
 							<div className="media">
 								{tweet.includes.media &&
-									tweet.includes.media.map((i, key) => (
+									tweet.includes.media.map((currTweet, key) => (
 										<img
 											key={key}
 											className="tweet-image"
-											src={i.type === "photo" ? i.url : i.preview_image_url}
+											src={
+												currTweet.type === "photo"
+													? currTweet.url
+													: currTweet.preview_image_url
+											}
 											alt="tweet"
 										/>
 									))}
