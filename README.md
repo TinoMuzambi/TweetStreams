@@ -1,6 +1,6 @@
 # Live Tweet Streams
 
-Using the Twitter API to produce a live stream of tweets that match a given query.
+Using the Twitter API to produce a live stream of tweets that match a given query. Limited to 20 tweets per query.
 
 ## Back-end
 
