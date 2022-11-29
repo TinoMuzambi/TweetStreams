@@ -15,8 +15,8 @@ function App() {
 
 	useEffect(() => {
 		// Create socket.io client.
-		const socket = io("https://live-tweet-stream.herokuapp.com", {
-			origins: "https://live-tweet-stream.herokuapp.com",
+		const socket = io("https://tweetstreamsserver-production.up.railway.app/", {
+			origins: "https://tweetstreamsserver-production.up.railway.app/",
 		});
 
 		// Connect to server.
@@ -44,7 +44,7 @@ function App() {
 
 		// Call server to start streaming tweets.
 		fetch(
-			`https://live-tweet-stream.herokuapp.com/start/${query.toLowerCase()}`
+			`https://tweetstreamsserver-production.up.railway.app//start/${query.toLowerCase()}`
 		);
 		setQuery("");
 		setTweets([]);
@@ -54,7 +54,7 @@ function App() {
 	// 	e.preventDefault();
 
 	// 	// Call server to stop streaming tweets.
-	// 	fetch("https://live-tweet-stream.herokuapp.com/stop");
+	// 	fetch("https://tweetstreamsserver-production.up.railway.app//stop");
 	// 	setIsFetching(false);
 	// 	setCanStart(true);
 	// };
